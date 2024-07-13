@@ -1,11 +1,18 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Inicio from "./Paginas/Inicio";
 import SobreMim from "./Paginas/SobreMim";
 
-// Ex básico sobre rotas com JS
-const pagina = window.location.pathname === "/" ? <Inicio /> : <SobreMim />;
-
 function App() {
-  return pagina;
+  return (
+    //Rotas com React Router e página inválida
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Inicio />} />
+        <Route path="/sobremim" element={<SobreMim />} />
+        <Route path="*" element={<h1>Página não encontrada!</h1>} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
