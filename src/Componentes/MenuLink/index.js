@@ -46,3 +46,62 @@ Lembrese que a prop children é uma ferramenta poderosa para criar componentes f
 
 Você consegue pensar em outros exemplos de como a prop children pode ser útil?
 */
+
+/* NAVLINK ao invés de LINK
+Primeiramente, remova a seguinte linha de código:
+
+const localizacao = useLocation();
+
+Remova também esse código que está dentro da template string do Link:
+
+${localizacao.pathname === to ? styles.linkDestacado : ""}
+
+Agora, troque o componente Link por NavLink. Não esqueça de importar NavLink:
+
+import { NavLink } from 'react-router-dom';
+
+Você pode aproveitar para remover os imports useLocation e Link.
+
+Como é dito na seção NavLink da documentação, por padrão, o NavLink adiciona uma classe active para o link que realmente está ativo. Porém, como estamos utilizando Módulos CSS, precisaríamos criar um arquivo CSS normal com o estilo de link destacado.
+
+Ao invés disso, vamos utilizar outro recurso que o NavLink oferece. Nos atributos className e style, em vez de atribuir uma string diretamente a eles, podemos atribuir uma função que retorna uma string. Essa função fornece como parâmetro um objeto que contém a propriedade isActive. Para acessar essa propriedade, vamos substituir a template string do className para uma função que retorna essa template string:
+
+        <NavLink
+            className={({ isActive }) => `
+                ${styles.link}
+            `}
+            to={to}
+        >
+            {children}
+        </NavLink>
+
+Como o nome indica, a propriedade isActive (do inglês "está ativo") é true se o link estiver ativo e false se não estiver. Assim, podemos adicionar mais uma interpolação, com uma verificação semelhante à que estávamos fazendo antes:
+
+${isActive ? styles.linkDestacado : ""}
+
+Nesse ponto, pode ser que aconteça com você dos dois links ficarem ativos ao mesmo tempo quando você estiver na rota inicial! Isso porque o react-router-dom pode interpretar que a rota /sobremim também vai corresponder à rota /, pois ela também começa com /.
+
+Para evitar isso, você pode adicionar a propriedade end no NavLink para garantir que esse comportamento não aconteça.
+
+O código completo fica assim:
+
+import { NavLink } from 'react-router-dom';
+import styles from './MenuLink.module.css';
+
+export default function MenuLink({ children, to }) {
+
+    return (
+        <NavLink
+            className={({ isActive }) => `
+                ${styles.link}
+                ${isActive ? styles.linkDestacado : ""}
+            `}
+            to={to}
+            end
+        >
+            {children}
+        </NavLink>
+    )
+}
+
+Dessa forma, o projeto continua a funcionar igual a antes! Mas em vez de obter a rota através do useLocation e fazer uma verificação da rota atual, obtemos diretamente essa verificação pelo componente NavLink.*/

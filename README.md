@@ -9,6 +9,8 @@
 
 - Router versão 6 (npm install react-router-dom@6)
 
+## Configurar jsconfig.json
+
 ### O que aprendemos:
 
 - 1 - Criando o olá mundo

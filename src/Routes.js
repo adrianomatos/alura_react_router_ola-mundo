@@ -7,7 +7,7 @@ function AppRoutes() {
   return (
     <BrowserRouter>
       <Menu />
-			
+
       <Routes>
         <Route path="/" element={<Inicio />} />
         <Route path="/sobremim" element={<SobreMim />} />
