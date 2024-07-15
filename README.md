@@ -1,22 +1,24 @@
-## Criação do projeto
+# React: desenvolvendo em React Router com JavaScript
 
+<img src="https://github.com/adrianomatos/alura_react_router_ola-mundo/blob/main/Print1.png" alt="Print" />
+<img src="https://github.com/adrianomatos/alura_react_router_ola-mundo/blob/main/Print2.png" alt="Print" />
+<img src="https://github.com/adrianomatos/alura_react_router_ola-mundo/blob/main/Print3.png" alt="Print" />
+
+## Criação do projeto
 - npx create-react-app ola-mundo
 - limpar projeto, deixado só app.js e indexes, gitignore, package, readme e pastas public e node_modules
 - cd ola-mundo
 - npm start
 
 ## Bibliotecas
-
 - Router versão 6 (npm install react-router-dom@6)
 - React Markdown (npm install react-markdown)
 
 ## Organização do Projeto
-
 - Configurar jsconfig.json auxilia nos imports
 - Rotas aninhadas auxilia na manutenção do projeto
 
 ### O que aprendemos:
-
 - 1 - Criando o olá mundo
   A - Instalar o react-router-dom;
   Utilizamos o comando npm install react-router-dom@6 que pegamos da própria documentação para instalar a versão 6.
